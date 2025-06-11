@@ -15,3 +15,7 @@
 
 ### Install requirements.txt
 * pip install requirements.txt
+
+### Launch app and test predictions
+* python app.py
+
