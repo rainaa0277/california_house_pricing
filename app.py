@@ -24,5 +24,14 @@ def predict_api():
     output = lr_model.predict(new_data)
     return jsonify(output[0])
 
+@app.route('/predict',methods=['POST'])
+def predict():
+    data = [x for x in request.form.values()]
+    print('data',data)
+    input_data = scaler.transform(np.array(data).reshape(1,-1))
+    print('input_data',input_data)
+    output = lr_model.predict(input_data)
+    return render_template('home.html', prediction_text='The predicted value is {}'.format(output[0]))
+
 if __name__ == "__main__":
     app.run(debug=True)
